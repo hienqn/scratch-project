@@ -14,7 +14,6 @@ const redirectToPath = (history, path) => {
 const Landing = ({ history }) => {
   return (
     <Container fluid className='container'>
-      {/* Center landing page text by placing in middle column */}
       <div className="mt-5">
         <h1 class="d-flex justify-content-center">
           {" "}
