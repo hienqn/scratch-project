@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {
   Navbar,
   Nav /* Form, FormControl, Button, Container */,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const NavigateBar = () => {
+const NavigateBar = ({isAuthenticated}) => {
+
+  const loggedIn = (
+    <Fragment>
+      <Nav.Link style={{ color: "white" }} href="/login">
+        Login
+      </Nav.Link>
+
+      <Nav.Link style={{ color: "white" }} href="/signup">
+        Signup
+      </Nav.Link>
+    </Fragment>
+  );
+
+  const loggedOut = (
+    <Fragment>
+      <Nav.Link style={{ color: "white" }} href="/login">
+        Logout
+      </Nav.Link>
+    </Fragment>
+  );
   return (
     <Navbar bg="primary" variant="dark">
       {/* Leftside Nav Logo/Link */}
@@ -20,15 +40,8 @@ const NavigateBar = () => {
         <Nav.Link style={{ color: 'white' }} href="/submit">
           Submit Idea
         </Nav.Link>
+        {isAuthenticated ? loggedOut: loggedIn}
         {/* <Link to='/login'> */}
-        <Nav.Link style={{ color: 'white' }} href="/login">
-          Login
-        </Nav.Link>
-        {/* </Link> */}
-        {/* <Link to='/signup'> */}
-        <Nav.Link style={{ color: 'white' }} href="/signup">
-          Signup
-        </Nav.Link>
         {/* </Link> */}
       </Nav>
     </Navbar>
