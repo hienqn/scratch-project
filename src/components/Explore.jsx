@@ -63,22 +63,25 @@ const Explore = (props) => {
   // Generate an array of box components
   const generateBoxes = ideas.map((idea, idx) => {
     return (
-      <Card key={idx} style={{ width: '18rem' }} className="m-2">
+      <Card key={idx} style={{ width: "18rem" }} className="m-2">
         <Card.Img variant="top" src={idea.image} />
         <Card.Body>
           <Card.Title>{idea.name}</Card.Title>
           <Card.Text>{idea.description}</Card.Text>
-          <NavLink
-            to={{
-              pathname: '/idea',
-              state: {
-                idea_id: idea.idea_id,
-              },
-            }}
-          >
-            <Button variant="primary"> Find out more </Button>
-          </NavLink>
         </Card.Body>
+        <NavLink
+          to={{
+            pathname: "/idea",
+            state: {
+              idea_id: idea.idea_id,
+            },
+          }}
+        >
+          <Button variant="primary" className="mb-3 ml-3">
+            {" "}
+            Find out more{" "}
+          </Button>
+        </NavLink>
       </Card>
     );
   });

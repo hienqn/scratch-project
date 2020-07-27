@@ -6,7 +6,6 @@ import axios from 'axios';
 
 const SubmitIdea = () => {
   const [retrievedTechStacks, setRetrievedTechStacks] = useState([]);
-
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [why, setWhy] = useState('');
