@@ -15,12 +15,12 @@ const Landing = ({ history }) => {
   return (
     <Container fluid className='container'>
       <div className="mt-5">
-        <h1 class="d-flex justify-content-center">
+        <h1 className="d-flex justify-content-center">
           {" "}
           Welcome to Scratch Project{" "}
         </h1>
         <br />
-        <h2 class="mb-5 d-flex justify-content-center">
+        <h2 className="mb-5 d-flex justify-content-center">
           {" "}
           A place where developers make their dreams come true{" "}
         </h2>

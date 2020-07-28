@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Landing from './Landing.jsx';
 import Explore from './Explore.jsx';
 import Login from './Login.jsx';
@@ -14,6 +14,22 @@ const App = () => {
     isLoggedIn: false,
     username: '',
   });
+
+  useEffect(() => {
+    const reqLogin = async () => {
+      let response = await fetch('/api/auth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+      if (response.status === 200) {
+        setAuthStatus({ isLoggedIn: true, username });
+      }
+    }
+    reqLogin();
+  }, []);
 
   return (
     <Router>

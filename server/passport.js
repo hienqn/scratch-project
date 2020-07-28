@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const model = require('./Models/model');
 const bcrypt = require('bcrypt');
+
 // to Authenticate with passport
 const initialize = (passport) => {
 	const autheticateUser = (username, password, done) => {
@@ -60,7 +61,6 @@ const initialize = (passport) => {
 					console.log(err, 'deserializeUser error');
 					return;
 				}
-
 				return done(null, results.rows[0]);
 			}
 		);

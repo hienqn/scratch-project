@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import '../styles/login-signup.scss';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import { Form, Button } from 'react-bootstrap';
+import setAuthToken from '../setAuthToken/setAuthToken';
 
 const Login = (props) => {
   const { authStatus, setAuthStatus } = props;
@@ -30,8 +31,10 @@ const Login = (props) => {
       },
       body: JSON.stringify(body),
     });
-
+    console.log(response, 'dwdaw');
+    let {token} = response.body;
     if (response.status === 200) {
+      localStorage.setItem('x-auth-token', token)
       setLoginStatus(true);
       setAuthStatus({ isLoggedIn: true, username });
     } else setLoginStatus(false);

@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const jwt = require("jsonwebtoken");
 const app = express();
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
@@ -37,7 +37,24 @@ app.use('/api/login', loginRouter);
 app.use('/api/signup', signUpRouter);
 app.use('/api/explore', exploreRouter);
 app.use('/api/submit', submitRouter);
-
+app.get('/api/auth', (req, res) => {
+	const token = req.header('x-auth-token');
+	// check if not token
+	if (!token) {
+		return res.status(401).json({ msg: 'No token, authorization denied' });
+	}
+	console.log(token);
+	const decoded = jwt.verify(token, 'secrettoken');
+	console.log(decoded)
+	try {
+		const decoded = jwt.verify(token, 'secrettoken');
+		req.user = decoded.user;
+		res.status(200).json({token: token});
+	} catch (err) {
+		res.status(401).json({ msg: 'Token is not valid' });
+	}
+	}
+)
 // globoal error handler
 app.use((err, req, res, next) => {
 	const defaultErr = {

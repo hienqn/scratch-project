@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const NavigateBar = ({isAuthenticated}) => {
+const NavigateBar = ({authStatus}) => {
 
   const loggedIn = (
     <Fragment>
@@ -44,16 +44,7 @@ const NavigateBar = ({isAuthenticated}) => {
             Submit Idea
           </Nav.Link>
         </Link>
-        <Link to="/login">
-          <Nav.Link style={{ color: 'white' }} href="/login">
-            Login
-          </Nav.Link>
-        </Link>
-        <Link to="/signup">
-          <Nav.Link style={{ color: 'white' }} href="/signup">
-            Signup
-          </Nav.Link>
-        </Link>
+        {authStatus ? loggedIn : loggedOut}
       </Nav>
     </Navbar>
   );

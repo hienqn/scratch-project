@@ -98,7 +98,7 @@ const Explore = (props) => {
             <Button variant="primary"> Find out more </Button>
           </NavLink>
         </Card.Body>
-        <NavLink
+        {/* <NavLink
           to={{
             pathname: "/idea",
             state: {
@@ -110,7 +110,7 @@ const Explore = (props) => {
             {" "}
             Find out more{" "}
           </Button>
-        </NavLink>
+        </NavLink> */}
       </Card>
     );
   });
